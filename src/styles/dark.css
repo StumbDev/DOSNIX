@@ -1,0 +1,23 @@
+:root {
+    --bg-color: #1e1e1e;
+    --text-color: #d4d4d4;
+    --link-color: #61dafb;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: sans-serif;
+  }
+  
+  a {
+    color: var(--link-color);
+  }
+  
+  main {
+    padding: 20px;
+    text-align: center;
+  }
+  
