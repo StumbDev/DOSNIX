@@ -1,0 +1,40 @@
+# Define the compiler and flags
+CC = gcc
+CFLAGS = -Wall -O2
+LDFLAGS = -lm
+
+# Directories
+SRC_DIR = src
+INC_DIR = include
+OBJ_DIR = build/obj
+BIN_DIR = build/bin
+
+# Source files
+SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
+OBJ_FILES = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
+
+# Executable name
+TARGET = $(BIN_DIR)/dosnix.exe
+
+# Default target
+all: $(TARGET)
+
+# Linking
+$(TARGET): $(OBJ_FILES)
+	@mkdir -p $(BIN_DIR)
+	$(CC) $(OBJ_FILES) -o $(TARGET) $(LDFLAGS)
+
+# Compilation
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/%.h
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+
+# Clean build artifacts
+clean:
+	rm -rf $(OBJ_DIR) $(BIN_DIR)
+
+# Rebuild the project from scratch
+rebuild: clean all
+
+# Phony targets to avoid conflict with files of the same name
+.PHONY: all clean rebuild
