@@ -7,7 +7,7 @@ void shell() {
     char command[256];
 
     while (1) {
-        printf("DOSNIX> ");
+        printf("i: ");
         fgets(command, sizeof(command), stdin);
         command[strcspn(command, "\n")] = 0;
 
