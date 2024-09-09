@@ -36,6 +36,10 @@ void ls_command() {
     }
 }
 
+void uname_command() {
+    // make uname command
+}
+
 void cp_command(const char *source, const char *destination) {
     FILE *src = fopen(source, "rb");
     FILE *dest = fopen(destination, "wb");
